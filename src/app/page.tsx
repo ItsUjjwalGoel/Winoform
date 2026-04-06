@@ -11,79 +11,179 @@ export default function Home() {
   const [showResult, setShowResult] = useState(false);
 
   const options = [
-    { id: "strategy", title: "Strategy & Governance", description: "Leadership-driven governance and planning." },
-    { id: "risk", title: "Risk & Threat Intelligence", description: "Identify and monitor risks." },
-    { id: "cloud", title: "Cloud & Infrastructure", description: "Secure and scalable cloud systems." },
-    { id: "data", title: "Data Protection", description: "Ensure privacy and encryption." },
-    { id: "automation", title: "AI & Software Development", description: "Build intelligent systems and apps." },
-    { id: "monitoring", title: "Monitoring & Observability", description: "Real-time system visibility." },
-    { id: "people", title: "Workforce Productivity", description: "Improve team efficiency." },
-    { id: "security", title: "Cybersecurity & Defense", description: "Protect systems from threats." },
-  ];
+  {
+    id: "strategy",
+    title: "1. Strategy & Governance",
+    description:
+      "Leadership, risk appetite, and regulatory alignment (GDPR, NIS2, AI Act).",
+  },
+  {
+    id: "risk",
+    title: "2. AI-Powered Risk & Threat Intelligence",
+    description:
+      "AI-driven risk analysis, threat hunting, and global monitoring.",
+  },
+  {
+    id: "zeroTrust",
+    title: "3. Zero Trust Architecture",
+    description:
+      "MFA, identity security, least privilege, and continuous verification.",
+  },
+  {
+    id: "defense",
+    title: "4. Defense in Depth",
+    description:
+      "EDR, XDR, SIEM, and layered protection systems.",
+  },
+  {
+    id: "cloud",
+    title: "5. Cloud & Network Security",
+    description:
+      "Secure cloud environments, VPN, and 5G/6G readiness.",
+  },
+  {
+    id: "data",
+    title: "6. Data Protection & Encryption",
+    description:
+      "Encryption, DLP, backups, and privacy by design.",
+  },
+  {
+    id: "automation",
+    title: "7. AI & Automation",
+    description:
+      "SOAR, AI agents, and automated response systems.",
+  },
+  {
+    id: "incident",
+    title: "8. Incident Response",
+    description:
+      "24/7 SOC, breach recovery, and forensic analysis.",
+  },
+  {
+    id: "iot",
+    title: "9. OT & IoT Security",
+    description:
+      "Industry 4.0, IoT, and ICS/SCADA protection.",
+  },
+  {
+    id: "people",
+    title: "10. Employee Training",
+    description:
+      "Awareness programs, phishing simulations, and certifications.",
+  },
+  {
+    id: "compliance",
+    title: "11. Compliance & Standards",
+    description:
+      "ISO 27001, NIST, and regulatory compliance.",
+  },
+  {
+    id: "monitoring",
+    title: "12. Monitoring & Improvement",
+    description:
+      "Audits, KPIs, and continuous security improvement.",
+  },
+];
 
   const partners = [
     {
       name: "Sophos",
       logo: "/sophos.png",
-      category: ["security", "risk"],
-      description: "Advanced cybersecurity solutions.",
-      points: ["Threat prevention", "AI security", "Unified platform"],
+      category: ["security", "risk", "defense", "cloud"],
+      description: "Advanced AI-powered cybersecurity platform.",
+      points: [
+        "Endpoint and network security",
+        "Threat detection",
+        "Cloud protection",
+      ],
     },
     {
       name: "Fortra",
       logo: "/fortra.png",
-      category: ["security", "data", "risk"],
+      category: ["security", "data", "compliance", "risk"],
       description: "Cybersecurity and compliance solutions.",
-      points: ["Data protection", "Compliance automation", "Threat intelligence"],
+      points: [
+        "Data protection",
+        "Compliance automation",
+        "Threat intelligence",
+      ],
     },
     {
       name: "Motadata",
       logo: "/motadata.png",
-      category: ["monitoring", "cloud"],
+      category: ["monitoring", "incident", "cloud"],
       description: "Observability and ITSM platform.",
-      points: ["Monitoring", "Automation", "IT workflows"],
+      points: [
+        "Monitoring systems",
+        "Incident response",
+        "Automation workflows",
+      ],
     },
     {
       name: "Kratikal",
       logo: "/kratikal.png",
-      category: ["security"],
-      description: "Cybersecurity and compliance.",
-      points: ["VAPT", "Compliance", "Security posture"],
+      category: ["security", "compliance", "risk"],
+      description: "CERT-In cybersecurity and VAPT services.",
+      points: [
+        "VAPT",
+        "Compliance audits",
+        "Security testing",
+      ],
     },
     {
       name: "QNTM Network",
       logo: "/qntm.png",
       category: ["strategy", "automation"],
-      description: "Digital transformation solutions.",
-      points: ["Scalable systems", "Innovation", "Tech integration"],
+      description: "Digital transformation and strategy.",
+      points: [
+        "Technology consulting",
+        "Innovation",
+        "Scalable systems",
+      ],
     },
     {
       name: "Heizen",
       logo: "/heizen.png",
       category: ["automation"],
-      description: "AI-powered software development.",
-      points: ["LLM engineers", "Fast delivery", "High quality"],
+      description: "AI-driven software development.",
+      points: [
+        "LLM engineers",
+        "Fast delivery",
+        "AI systems",
+      ],
     },
     {
       name: "SOTI",
       logo: "/soti.png",
-      category: ["people"],
-      description: "Mobile device management.",
-      points: ["Device control", "Remote fixes", "Analytics"],
+      category: ["people", "iot"],
+      description: "Mobile and device management.",
+      points: [
+        "Device monitoring",
+        "Remote troubleshooting",
+        "Security control",
+      ],
     },
     {
       name: "We360.ai",
       logo: "/we360.png",
       category: ["people"],
-      description: "Workforce analytics platform.",
-      points: ["Productivity boost", "Resource optimization", "Compliance"],
+      description: "Workforce productivity platform.",
+      points: [
+        "Employee analytics",
+        "Productivity insights",
+        "Compliance tracking",
+      ],
     },
     {
       name: "Userful",
       logo: "/userful.png",
       category: ["monitoring"],
       description: "Enterprise visualization platform.",
-      points: ["Video walls", "Data visualization", "Scalable AV"],
+      points: [
+        "Video walls",
+        "Real-time dashboards",
+        "Data visualization",
+      ],
     },
   ];
 
