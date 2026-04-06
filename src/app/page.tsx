@@ -5,191 +5,87 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FormSection from "@/components/FormSection";
 import ResultSection from "@/components/ResultSection";
+import { partners } from "@/data/partners";
+
+type Option = {
+  id: string;
+  title: string;
+  description: string;
+};
 
 export default function Home() {
   const [selected, setSelected] = useState<string[]>([]);
   const [showResult, setShowResult] = useState(false);
 
-  const options = [
-  {
-    id: "strategy",
-    title: "1. Strategy & Governance",
-    description:
-      "Leadership, risk appetite, and regulatory alignment (GDPR, NIS2, AI Act).",
-  },
-  {
-    id: "risk",
-    title: "2. AI-Powered Risk & Threat Intelligence",
-    description:
-      "AI-driven risk analysis, threat hunting, and global monitoring.",
-  },
-  {
-    id: "zeroTrust",
-    title: "3. Zero Trust Architecture",
-    description:
-      "MFA, identity security, least privilege, and continuous verification.",
-  },
-  {
-    id: "defense",
-    title: "4. Defense in Depth",
-    description:
-      "EDR, XDR, SIEM, and layered protection systems.",
-  },
-  {
-    id: "cloud",
-    title: "5. Cloud & Network Security",
-    description:
-      "Secure cloud environments, VPN, and 5G/6G readiness.",
-  },
-  {
-    id: "data",
-    title: "6. Data Protection & Encryption",
-    description:
-      "Encryption, DLP, backups, and privacy by design.",
-  },
-  {
-    id: "automation",
-    title: "7. AI & Automation",
-    description:
-      "SOAR, AI agents, and automated response systems.",
-  },
-  {
-    id: "incident",
-    title: "8. Incident Response",
-    description:
-      "24/7 SOC, breach recovery, and forensic analysis.",
-  },
-  {
-    id: "iot",
-    title: "9. OT & IoT Security",
-    description:
-      "Industry 4.0, IoT, and ICS/SCADA protection.",
-  },
-  {
-    id: "people",
-    title: "10. Employee Training",
-    description:
-      "Awareness programs, phishing simulations, and certifications.",
-  },
-  {
-    id: "compliance",
-    title: "11. Compliance & Standards",
-    description:
-      "ISO 27001, NIST, and regulatory compliance.",
-  },
-  {
-    id: "monitoring",
-    title: "12. Monitoring & Improvement",
-    description:
-      "Audits, KPIs, and continuous security improvement.",
-  },
-];
-
-  const partners = [
+  const options: Option[] = [
     {
-      name: "Sophos",
-      logo: "/sophos.png",
-      category: ["security", "risk", "defense", "cloud"],
-      description: "Advanced AI-powered cybersecurity platform.",
-      points: [
-        "Endpoint and network security",
-        "Threat detection",
-        "Cloud protection",
-      ],
+      id: "strategy",
+      title: "1. Strategy & Governance",
+      description: "Leadership, compliance, and long-term direction.",
     },
     {
-      name: "Fortra",
-      logo: "/fortra.png",
-      category: ["security", "data", "compliance", "risk"],
-      description: "Cybersecurity and compliance solutions.",
-      points: [
-        "Data protection",
-        "Compliance automation",
-        "Threat intelligence",
-      ],
+      id: "risk",
+      title: "2. AI Risk Intelligence",
+      description: "AI-based threat detection and monitoring.",
     },
     {
-      name: "Motadata",
-      logo: "/motadata.png",
-      category: ["monitoring", "incident", "cloud"],
-      description: "Observability and ITSM platform.",
-      points: [
-        "Monitoring systems",
-        "Incident response",
-        "Automation workflows",
-      ],
+      id: "zeroTrust",
+      title: "3. Zero Trust Architecture",
+      description: "Identity-first security approach.",
     },
     {
-      name: "Kratikal",
-      logo: "/kratikal.png",
-      category: ["security", "compliance", "risk"],
-      description: "CERT-In cybersecurity and VAPT services.",
-      points: [
-        "VAPT",
-        "Compliance audits",
-        "Security testing",
-      ],
+      id: "defense",
+      title: "4. Defense in Depth",
+      description: "Layered security across systems.",
     },
     {
-      name: "QNTM Network",
-      logo: "/qntm.png",
-      category: ["strategy", "automation"],
-      description: "Digital transformation and strategy.",
-      points: [
-        "Technology consulting",
-        "Innovation",
-        "Scalable systems",
-      ],
+      id: "cloud",
+      title: "5. Cloud Security",
+      description: "Secure cloud infrastructure.",
     },
     {
-      name: "Heizen",
-      logo: "/heizen.png",
-      category: ["automation"],
-      description: "AI-driven software development.",
-      points: [
-        "LLM engineers",
-        "Fast delivery",
-        "AI systems",
-      ],
+      id: "data",
+      title: "6. Data Protection",
+      description: "Encryption and privacy controls.",
     },
     {
-      name: "SOTI",
-      logo: "/soti.png",
-      category: ["people", "iot"],
-      description: "Mobile and device management.",
-      points: [
-        "Device monitoring",
-        "Remote troubleshooting",
-        "Security control",
-      ],
+      id: "automation",
+      title: "7. AI & Automation",
+      description: "SOAR, AI agents, automation.",
     },
     {
-      name: "We360.ai",
-      logo: "/we360.png",
-      category: ["people"],
-      description: "Workforce productivity platform.",
-      points: [
-        "Employee analytics",
-        "Productivity insights",
-        "Compliance tracking",
-      ],
+      id: "incident",
+      title: "8. Incident Response",
+      description: "SOC and threat response.",
     },
     {
-      name: "Userful",
-      logo: "/userful.png",
-      category: ["monitoring"],
-      description: "Enterprise visualization platform.",
-      points: [
-        "Video walls",
-        "Real-time dashboards",
-        "Data visualization",
-      ],
+      id: "iot",
+      title: "9. IoT Security",
+      description: "Device and edge protection.",
+    },
+    {
+      id: "people",
+      title: "10. Workforce Enablement",
+      description: "Training and productivity tools.",
+    },
+    {
+      id: "compliance",
+      title: "11. Compliance",
+      description: "ISO, NIST, regulations.",
+    },
+    {
+      id: "monitoring",
+      title: "12. Monitoring & Observability",
+      description: "Real-time visibility and insights.",
     },
   ];
 
-  const filteredPartners = partners.filter((partner) =>
-    partner.category.some((cat) => selected.includes(cat))
-  );
+  const filteredPartners =
+    selected.length > 0
+      ? partners.filter((partner) =>
+          partner.category.some((cat) => selected.includes(cat))
+        )
+      : [];
 
   const handleSubmit = () => {
     if (selected.length === 0) {
@@ -203,7 +99,7 @@ export default function Home() {
     <div className="bg-white text-gray-900">
       <Navbar />
 
-      {/* Hero */}
+      {/* HERO */}
       <div className="max-w-6xl mx-auto px-6 pt-16 pb-10">
         <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">
           Identify your business and technology priorities
@@ -215,6 +111,7 @@ export default function Home() {
         </p>
       </div>
 
+      {/* FORM */}
       <FormSection
         options={options}
         selected={selected}
@@ -222,6 +119,7 @@ export default function Home() {
         onSubmit={handleSubmit}
       />
 
+      {/* RESULT */}
       {showResult && <ResultSection partners={filteredPartners} />}
 
       <Footer />

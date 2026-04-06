@@ -1,26 +1,27 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-
-type Partner = {
-  name: string;
-  logo: string;
-  description: string;
-};
+import { Partner } from "@/types";
 
 export default function PartnerCard({ partner }: { partner: Partner }) {
+  const router = useRouter();
+
   return (
-    <div className="border rounded-lg p-5">
+    <div
+      onClick={() => router.push(`/partner/${partner.slug}`)}
+      className="border p-5 rounded-lg cursor-pointer hover:border-black transition"
+    >
       <Image
         src={partner.logo}
         alt={partner.name}
-        width={80}
-        height={80}
-        className="mb-4"
+        width={48}
+        height={48}
+        className="mb-4 object-contain"
       />
 
-      <h3 className="text-lg font-semibold">{partner.name}</h3>
-      <p className="text-sm text-gray-600 mt-2">{partner.description}</p>
+      <h3 className="font-semibold">{partner.name}</h3>
+      <p className="text-sm text-gray-600">{partner.description}</p>
     </div>
   );
 }
