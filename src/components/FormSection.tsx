@@ -2,15 +2,29 @@
 
 import OptionCard from "./OptionCard";
 
+// ✅ Define types
+type Option = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+type FormSectionProps = {
+  options: Option[];
+  selected: string[];
+  setSelected: (value: string[]) => void;
+  onSubmit: () => void;
+};
+
 export default function FormSection({
   options,
   selected,
   setSelected,
   onSubmit,
-}: any) {
+}: FormSectionProps) {
   const handleSelect = (id: string) => {
     if (selected.includes(id)) {
-      setSelected(selected.filter((i: string) => i !== id));
+      setSelected(selected.filter((i) => i !== id));
     } else {
       setSelected([...selected, id]);
     }
@@ -21,7 +35,7 @@ export default function FormSection({
       <h2 className="text-xl font-semibold">Select relevant domains</h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-        {options.map((opt: any) => (
+        {options.map((opt) => (
           <OptionCard
             key={opt.id}
             {...opt}

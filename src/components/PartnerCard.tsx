@@ -1,25 +1,26 @@
-export default function PartnerCard({
-  name,
-  description,
-  points,
-  logo,
-}: any) {
+"use client";
+
+import Image from "next/image";
+
+type Partner = {
+  name: string;
+  logo: string;
+  description: string;
+};
+
+export default function PartnerCard({ partner }: { partner: Partner }) {
   return (
-    <div className="border border-gray-200 rounded-lg p-6">
-      <div className="flex items-center gap-3 mb-4">
-        <img src={logo} className="w-16 h-16 object-contain" />
-        <h3 className="text-base font-medium">{name}</h3>
-      </div>
+    <div className="border rounded-lg p-5">
+      <Image
+        src={partner.logo}
+        alt={partner.name}
+        width={80}
+        height={80}
+        className="mb-4"
+      />
 
-      <p className="text-sm text-gray-600 mb-4">
-        {description}
-      </p>
-
-      <ul className="text-sm space-y-2">
-        {points.map((p: string, i: number) => (
-          <li key={i}>• {p}</li>
-        ))}
-      </ul>
+      <h3 className="text-lg font-semibold">{partner.name}</h3>
+      <p className="text-sm text-gray-600 mt-2">{partner.description}</p>
     </div>
   );
 }

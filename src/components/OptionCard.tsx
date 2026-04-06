@@ -1,12 +1,21 @@
 "use client";
 
+// ✅ Define props type
+type OptionCardProps = {
+  id: string;
+  title: string;
+  description: string;
+  selected: boolean;
+  onSelect: (id: string) => void;
+};
+
 export default function OptionCard({
   id,
   title,
   description,
   selected,
   onSelect,
-}: any) {
+}: OptionCardProps) {
   return (
     <div
       onClick={() => onSelect(id)}
